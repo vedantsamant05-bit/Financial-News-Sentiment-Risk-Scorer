@@ -1,0 +1,96 @@
+# ─────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# ─────────────────────────────────────────────
+# Secrets & config
+# ─────────────────────────────────────────────
+.env
+*.env
+!.env.example
+
+token
+secrets.toml
+
+# ─────────────────────────────────────────────
+# Runtime data / generated outputs
+# Ignore everything in data by default
+# ─────────────────────────────────────────────
+data/*
+
+# Keep only useful scripts / placeholders
+!data/.gitkeep
+!data/generate_dataset.py
+!data/load_real_data.py
+
+# ─────────────────────────────────────────────
+# Models (large files)
+# Model hosted on HuggingFace now
+# ─────────────────────────────────────────────
+models/*
+!models/.gitkeep
+
+*.bin
+*.pt
+*.pth
+*.safetensors
+checkpoints/
+
+# ─────────────────────────────────────────────
+# HuggingFace / Transformers cache
+# ─────────────────────────────────────────────
+.huggingface/
+.cache/
+hf_cache/
+transformers_cache/
+
+# ─────────────────────────────────────────────
+# Databases
+# ─────────────────────────────────────────────
+db/
+*.db
+*.sqlite
+*.sqlite3
+
+# ─────────────────────────────────────────────
+# Streamlit
+# ─────────────────────────────────────────────
+.streamlit/
+.streamlit/cache/
+
+# ─────────────────────────────────────────────
+# Jupyter
+# ─────────────────────────────────────────────
+notebooks/.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─────────────────────────────────────────────
+# OS / Editor files
+# ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ─────────────────────────────────────────────
+# Build artifacts
+# ─────────────────────────────────────────────
+*.egg-info/
+dist/
+build/
+
+# Optional utility scripts
+upload_model.py

@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  # ── FastAPI REST API ───────────────────────────────────────────────────────
+  api:
+    build: .
+    container_name: finrisk_api
+    command: uvicorn api.routes:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - ./data:/app/data          # persist pipeline outputs
+      - ./models:/app/models      # persist fine-tuned model
+      - ./db:/app/db              # persist SQLite database
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  # ── Streamlit Dashboard ────────────────────────────────────────────────────
+  dashboard:
+    build: .
+    container_name: finrisk_dashboard
+    command: streamlit run app/dashboard.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./models:/app/models
+    env_file:
+      - .env
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # ── Pipeline Orchestrator (one-shot run) ───────────────────────────────────
+  orchestrator:
+    build: .
+    container_name: finrisk_orchestrator
+    command: python scripts/orchestrator.py --skip-scrape
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./models:/app/models
+    env_file:
+      - .env
+    profiles:
+      - run          # only starts with: docker compose --profile run up orchestrator
+    restart: "no"
