@@ -427,6 +427,7 @@ high_risk_entities = (
     else pd.DataFrame()
 )
 
+top_risk_entity = risk_summary.iloc[0]["entity"]
 top_risk_score = risk_summary.iloc[0]["composite_risk_score"]
 top_risk_tier = risk_summary.iloc[0]["risk_tier"]
 
