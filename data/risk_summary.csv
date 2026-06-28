@@ -1,0 +1,11 @@
+entity,total_headlines,negative_ratio,avg_sentiment_score,anomaly_days,composite_risk_score,risk_tier
+Wipro,6,0.5,-0.379,0,13.05,LOW
+HDFC Bank,41,0.098,-0.011,2,12.63,LOW
+ICICI Bank,13,0.154,0.122,1,8.92,LOW
+Reliance Industries,70,0.043,0.188,2,7.96,LOW
+Infosys,41,0.146,-0.006,0,6.08,LOW
+Yes Bank,47,0.064,0.019,1,5.68,LOW
+Paytm,8,0.0,-0.045,1,4.51,LOW
+Adani Group,78,0.038,0.09,0,1.54,LOW
+Tata Motors,62,0.016,0.246,0,0.65,LOW
+Zomato,16,0.0,-0.001,0,0.03,LOW

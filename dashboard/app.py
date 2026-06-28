@@ -20,7 +20,7 @@ import streamlit as st
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from scripts.orchestrator import run_pipeline
+#from scripts.orchestrator import run_pipeline
 from config.settings import CFG
 
 SCORED_DATA_PATH = CFG.paths.scored_csv
@@ -389,23 +389,13 @@ def _load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     ]
 
     if missing:
-        st.warning(
-        "Pipeline outputs missing. Running pipeline for first launch..."
-    )
-
-    try:
-        with st.spinner("Generating data... Please wait (first launch may take a few minutes)."):
-            run_pipeline()
-
-        st.success("Pipeline completed successfully.")
-        st.rerun()
-
-    except Exception as e:
         st.error(
-            "Pipeline generation failed:\n\n"
-            + str(e)
+            "Required dashboard CSV files are missing.\n\n"
+            + "\n".join(str(p) for p in missing)
+            + "\n\nRun orchestrator locally before deployment."
         )
         st.stop()
+
 
     return (
         pd.read_csv(SCORED_DATA_PATH, parse_dates=["date"]),

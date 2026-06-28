@@ -8,36 +8,52 @@ __pycache__/
 *.pyd
 *.so
 
+# ─────────────────────────────────────────────
 # Virtual environments
+# ─────────────────────────────────────────────
 venv/
 .venv/
 env/
 ENV/
 
 # ─────────────────────────────────────────────
-# Secrets & config
+# Secrets / Environment
 # ─────────────────────────────────────────────
 .env
 *.env
 !.env.example
-
 token
 secrets.toml
 
 # ─────────────────────────────────────────────
-# Runtime data / generated outputs
-# Ignore everything in data by default
+# Runtime data
+# Ignore everything by default
 # ─────────────────────────────────────────────
 data/*
 
-# Keep only useful scripts / placeholders
-!data/.gitkeep
+# Keep scripts
 !data/generate_dataset.py
 !data/load_real_data.py
+!data/.gitkeep
+
+# Keep deployment CSVs (IMPORTANT)
+!data/scored_headlines.csv
+!data/temporal_risk.csv
+!data/risk_summary.csv
+!data/source_summary.csv
+
+# Ignore temporary/generated extras
+data/.seen_hashes.json
+data/.phrasebank_downloaded
+data/FinancialPhraseBank/
+data/__pycache__/
+data/batch_state.json
+data/financial_news.csv
+data/all-data.csv
+data/phrasebank_eval.csv
 
 # ─────────────────────────────────────────────
-# Models (large files)
-# Model hosted on HuggingFace now
+# Models (hosted on Hugging Face)
 # ─────────────────────────────────────────────
 models/*
 !models/.gitkeep
@@ -65,7 +81,7 @@ db/
 *.sqlite3
 
 # ─────────────────────────────────────────────
-# Streamlit
+# Streamlit cache
 # ─────────────────────────────────────────────
 .streamlit/
 .streamlit/cache/
